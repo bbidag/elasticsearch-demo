@@ -1,0 +1,6 @@
+{"index":{"_index":"item"}}
+{"item_name":"샤브샤브 밀키트","brand_id":"01","category_id":"01"}
+{"index":{"_index":"item"}}
+{"item_name":"샤브샤브 참깨소스","brand_id":"01","category_id":"02"}
+{"index":{"_index":"item"}}
+{"item_name":"샤브샤브용 육수","brand_id":"02","category_id":"01"}

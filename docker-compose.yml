@@ -1,0 +1,25 @@
+services:
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:8.5.2
+    environment:
+      - discovery.type=single-node
+    container_name: elastic-demo
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    ports:
+      - 9200:9200
+      - 9300:9300
+    volumes:
+      - ./dictionary:/usr/share/elasticsearch/config/dict
+      - ./jvm.options:/usr/share/elasticsearch/config/jvm.options
+      - ./log4j2.properties:/usr/share/elasticsearch/config/log4j2.properties
+      - ./elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml
+      - ./elasticsearch-plugins.yml:/usr/share/elasticsearch/config/elasticsearch-plugins.yml
+      - ./data:/usr/share/elasticsearch/data
+  kibana:
+    image: docker.elastic.co/kibana/kibana:8.5.2
+    container_name: kibana-demo
+    ports:
+      - 5601:5601

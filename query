@@ -1,0 +1,38 @@
+{
+    "query": {
+        "function_score": {
+            "query": {
+                "match": {
+                    "item_name": {
+                        "query": "샤브샤브",
+                        "analyzer": "nori_analyzer"
+                    }
+                }
+            },
+            "functions": [
+                {
+                    "filter": {
+                        "match": {
+                            "brand_id": {
+                                "query": "01"
+                            }
+                        }
+                    },
+                    "weight": 10
+                },
+                {
+                    "filter": {
+                        "match": {
+                            "category_id": {
+                                "query": "01"
+                            }
+                        }
+                    },
+                    "weight": 3
+                }
+            ],
+            "score_mode": "sum",
+            "boost_mode": "replace"
+        }
+    }
+}

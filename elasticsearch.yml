@@ -1,0 +1,6 @@
+cluster.name: "elastic-demo"
+network.host: 0.0.0.0
+path.data: /usr/share/elasticsearch/data
+bootstrap.memory_lock: true
+xpack.license.self_generated.type: basic
+xpack.security.enabled: false

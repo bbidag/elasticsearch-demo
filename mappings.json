@@ -1,0 +1,39 @@
+{
+    "mappings": {
+        "properties": {
+            "item_name": {
+                "type": "text",
+                "analyzer": "nori_analyzer"
+            },
+            "brand_id": {
+                "type": "keyword",
+                "similarity": "boolean"
+            },
+            "category_id": {
+                "type": "keyword",
+                "similarity": "boolean"
+            }
+        }
+    },
+    "settings": {
+        "refresh_interval": "30s",
+        "index": {
+            "analysis": {
+                "tokenizer": {
+                  "nori_user_dict": {
+                    "type": "nori_tokenizer",
+                    "decompound_mode": "mixed",
+                    "user_dictionary": "dict/userdict_ko.txt"
+                  }
+                },
+                "analyzer": {
+                  "nori_analyzer": {
+                    "filter": ["lowercase"],
+                    "type": "custom",
+                    "tokenizer": "nori_user_dict"
+                  }
+                }
+            }
+        }
+    }
+}
