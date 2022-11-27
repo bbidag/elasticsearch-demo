@@ -22,11 +22,15 @@ done
 
 echo "setting index for demo."
 
+curl -w "\n" -XDELETE "http://127.0.0.1:9200/item"
+
 MAPPING=$(cat ./mappings.json)
 
-curl -XPUT "http://127.0.0.1:9200/item" -H 'Content-Type: application/json' -d "${MAPPING}"
+curl -w "\n" -XPUT "http://127.0.0.1:9200/item" -H 'Content-Type: application/json' -d "${MAPPING}"
 
 echo "indexing demo data."
 
 curl -s -H "Content-Type: application/x-ndjson" -XPOST localhost:9200/_bulk --data-binary "@index_data.txt"; echo
+curl -w "\n" -XPOST "http://127.0.0.1:9200/item/_refresh"
+
 echo "Finish provisioning"
