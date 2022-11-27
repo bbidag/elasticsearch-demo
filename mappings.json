@@ -16,7 +16,6 @@
         }
     },
     "settings": {
-        "refresh_interval": "30s",
         "index": {
             "analysis": {
                 "tokenizer": {
